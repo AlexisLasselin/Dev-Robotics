@@ -1,25 +1,52 @@
-array = {69, 42, 8, 666, 1, 1000, 1997}
+selectArray = {69, 42, 8, 666, 1, 1000, 1997}
 
 -- Selection sort
-for i = 1, #array do
+for i = 1, #selectArray do
 	min = i
-	for j = i, #array do
-		if array[j] < array[min] then
+	for j = i, #selectArray do
+		if selectArray[j] < selectArray[min] then
 			min = j
 		end
 	end
-	array[i], array[min] = array[min], array[i]
+	selectArray[i], selectArray[min] = selectArray[min], selectArray[i]
 end
 
-print("Selection sort:", table.concat(array, ", "))
+print("Selection sort:", table.concat(selectArray, ", "))
 
 -- Insertion sort
-for i = 2, #array do
+insertArray = {69, 42, 8, 666, 1, 1000, 1997, 28398}
+
+for i = 2, #insertArray do
 	for j = i, 2, -1 do
-		if array[j] < array[j - 1] then
-			array[j], array[j - 1] = array[j - 1], array[j]
+		if insertArray[j] < insertArray[j - 1] then
+			insertArray[j], insertArray[j - 1] = insertArray[j - 1], insertArray[j]
 		end
 	end
 end
 
-print("Insertion sort:", table.concat(array, ", "))
+print("Insertion sort:", table.concat(insertArray, ", "))
+
+-- Bogo sort
+bogoArray = {69, 42, 8, 666, 1, 1000, 1997, 28398, 67789297}
+
+function isSorted(bogoArray)
+	for i = 2, #bogoArray do
+		if bogoArray[i] < bogoArray[i - 1] then
+			return false
+		end
+	end
+	return true
+end
+
+function shuffle(bogoArray)
+	for i = 1, #bogoArray do
+		local j = math.random(1, #bogoArray)
+		bogoArray[i], bogoArray[j] = bogoArray[j], bogoArray[i]
+	end
+end
+
+while not isSorted(bogoArray) do
+	shuffle(bogoArray)
+end
+
+print("Bogo sort:", table.concat(bogoArray, ", "))
