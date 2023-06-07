@@ -20,3 +20,7 @@ print(max(elf_sums))
 
 # Part 2:
 # How many Calories are the top 3 Elves carrying in total?
+
+elf_sums.sort(reverse=True)
+
+print(elf_sums[0] + elf_sums[1] + elf_sums[2])
