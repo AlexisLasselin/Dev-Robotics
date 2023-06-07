@@ -17,3 +17,20 @@ for rucksack in rucksacks:
         rucksack_sum += ord(overlap_char) - ord('a') + 1
         
 print(rucksack_sum)
+
+# Part 2:
+# Find the sum of the priorities of those item types.
+
+rucksack_sum = 0
+while len(rucksacks) > 0:
+    first_rucksack = set(rucksacks.pop())
+    second_rucksack = set(rucksacks.pop())
+    third_rucksack = set(rucksacks.pop())
+    overlap_char = ((first_rucksack.intersection(second_rucksack)).intersection(third_rucksack)).pop()
+
+    if overlap_char.isupper():
+        rucksack_sum += ord(overlap_char) - ord('A') + 27
+    else:
+        rucksack_sum += ord(overlap_char) - ord('a') + 1
+        
+print(rucksack_sum)
